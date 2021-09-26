@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+            Hi-Texas!
+        </title>
+        <link rel="stylesheet" href="/static/css/mycss.css">
+        <link rel="stylesheet" href="/static/css/public.css">
+    <link rel="shortcut icon" href="{% static 'image/扑克牌.svg' %}">
+    <link rel="stylesheet" href="/static/css/teachrules.css">
+    <link rel="stylesheet" href="/static/css/magic.min.css">
+    <script src="/static/js/jquery.min.js" type="text/javascript"></script>
+    <script src="/static/js/myjs.js" type="text/javascript"></script>
+    <script src="/static/js/public.js" type="text/javascript"></script>
+</head>
+<body style="background-image: url({% static 'image/background.png' %}">
+
+    <div id="navcontainer">
+    <div id="navlist">
+        <ul>
+            <li id="current_page" class="nav_menu1"><a href="../">首页</a></li>
+            <li class="nav_menu1"><a href="#">规则介绍</a>
+            <div class="list2">
+                <a href="{% url 'teachrules'%}">引导介绍</a>
+                <a href="{% url 'introduction'%}">规则总述</a>
+                <a href="#">策略简介</a>
+            </div>
+            </li>
+
+            <li  class="nav_menu1"><a href="{% url 'mainrules' %}">实战教学</a>
+                <div class="list2">
+                    <a href="{% url 'mainrules' %}">双人对战</a>
+                    <a href="#">多人对战</a>
+                </div>
+            </li>
+
+            <li class="nav_menu1"><a href="{% url 'assess' %}">实力评估</a></li>
+        {% if user.is_authenticated %}
+            <li  class="nav_menu1" id="login_button" style="top:0px;"><a href = '#' >hello! {{ user.username }}.</a>
+                <div class="list2" style="text-align:left;">
+                    <a href="#" style="padding-left: 20px;padding-right:20px;width:133px;text-align: center;">当前资金：{{user.money}}</a>
+                    <a href="#"style="padding-left: 20px;padding-right:20px;width:133px;text-align: center;">称号：{{user.title}}</a>
+                    <a href="user/logout" style="padding-left: 20px;padding-right:20px;width:133px;text-align: center;">注销</a>
+                </div>
+            </li>
+        {% endif %}
+        </ul>
+        {% if not user.is_authenticated %}
+        <a  id="login_button" href="{% url 'login'%}">注册/登录</a>
+        {% endif %}
+    <button id="up" class="nav_control"><img src="{% static 'image/up.png' %}" alt="up"></button>
+    </div>
+
+    </div>
+    <button id="down" class="nav_control"><img src="{% static 'image/down.png' %}" alt="down"></button>
+
+    <div id="mainpage">
+            <div id="logo">
+                <img src="{% static 'image/logo.png' %}">
+            </div>
+
+            <div class="play1">
+                <div class="play2">
+
+                </div>
+                <span class="play3">
+                </span>
+                <div class="play4">
+                   <a href="#table" id="to_table"> <img src="{% static 'image/play.png' %}"> </a>
+                </div>
+            </div>
+            <div id="sidepicture">
+               <img src="{% static 'image/heguan.png' %}">
+            </div>
+        </div>
+    <div id="start_choice">
+        <div id="table">
+            <img id="table_img" src="{% static 'image/table2.png' %}">
+        </div>
+        <div class="box1">
+            <div class="font1">
+                <a href="{% url 'teachrules' %}">  <img src="{% static 'image/choice1.1.png' %}" alt=""> </a>
+            </div>
+            <div class="back1">
+                <a href="{% url 'teachrules' %}">  <img src="{% static 'image/choice1.2.png' %}" alt=""> </a>
+            </div>
+        </div>
+        <div class="box2">
+            <div class="font2">
+                <a href="{% url 'mainrules' %}">  <img src="{% static 'image/choice2.1.png' %}"> </a>
+            </div>
+            <div class="back2">
+                <a href="{% url 'mainrules' %}"></a> <img src="{% static 'image/choice2.2.png' %}"> </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="mydiv">
+        <div class="logo2">
+            <a href="../"><img src="{% static 'image/logo.png' %}" alt="教程" width="100"></a>
+        </div>
+        <div class="menu">
+                <ol class="nav" id="now">
+                    <li><a>主页面</a></li>
+                </ol>
+                <ol class="nav">
+                    <li><a href="../teachrules/" >规则介绍</a></li>
+                </ol>
+                <ol class="nav">
+                    <li><a href="../mainrules/">实战教学</a></li>
+                </ol>
+                <ol class="nav">
+                    <li><a href="{% url 'assess' %}">实力评估</a></li>
+                </ol>
+        </div>
+    </div>
+</body>
+</html>

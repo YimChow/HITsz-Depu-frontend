@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hi-Texas 实战教学</title>
+    <link rel="shortcut icon" href="{% static 'image/扑克牌.svg' %}">
+    <link rel="stylesheet" href="/static/css/Depuuuuu.css">
+    <link rel="stylesheet" href="/static/css/teachrules.css">
+    <link rel="stylesheet" href="/static/css/gameplay.css">
+    <link rel="stylesheet" href="/static/css/public.css">
+    <link rel="stylesheet" href="/static/css/magic.min.css">
+    <script src="/static/js/Depu.js"></script>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/gameback2.js"></script>
+    <script src="/static/js/public.js" type="text/javascript"></script>
+
+</head>
+<body>
+<div id="navcontainer">
+    <div id="navlist">
+        <ul>
+        <li class="nav_menu1"><a href="../">首页</a></li>
+        <li class="nav_menu1"><a href="#">规则介绍</a>
+        <div class="list2">
+            <a href="{% url 'teachrules'%}">引导介绍</a>
+            <a href="{% url 'introduction'%}">规则总述</a>
+            <a href="#">策略简介</a>
+        </div>
+        </li>
+
+        <li  id="current_page" class="nav_menu1"><a href="{% url 'mainrules' %}">实战教学</a>
+            <div class="list2">
+                    <a href="{% url 'mainrules' %}">双人对战</a>
+                    <a href="#">多人对战</a>
+                </div>
+        </li>
+
+            <li class="nav_menu1"><a href="{% url 'assess' %}">实力评估</a></li>
+            {% if user.is_authenticated %}
+            <li  class="nav_menu1" id="login_button" style="top:0px;"><a href = '#' >hello! {{ user.username }}.</a>
+                <div class="list2" style="text-align:left;">
+                    <a href="#" style="padding-left: 20px;padding-right:20px;width:133px;text-align: center;">当前资金：{{user.money}}</a>
+                    <a href="#"style="padding-left: 20px;padding-right:20px;width:133px;text-align: center;">称号：{{user.title}}</a>
+                    <a href="../user/logout" style="padding-left: 20px;padding-right:20px;width:133px;text-align: center;">注销</a>
+                </div>
+            </li>
+        {% endif %}
+        </ul>
+        {% if not user.is_authenticated %}
+        <a  id="login_button" href="{% url 'login'%}">注册/登录</a>
+        {% endif %}
+
+        <button id="up" class="nav_control"><img src="{% static 'image/up.png' %}" alt="up"></button>
+    </div>
+</div>
+
+    <div class="logo2">
+        <img src="{% static 'image/logo.png' %}" alt="教程" width="100">
+    </div>
+
+    <div id="fapaixiazhu">
+        <!-- <h1 class="title">发牌下注</h1> -->
+        <div id="down_button"><button id="down" class="nav_control"><img src="{% static 'image/down.png' %}" alt="down"></button></div>
+
+        <ol class='nav perflop'>
+
+            <li>
+                <div class="box">
+                    <div class="front"><a href="#">Preflop</a></div>
+                    <div class="bottom">
+                        <a href="#">Preflop</a>
+                    </div>
+                </div>
+            </li>
+            <div class="contents">
+                <span id="top1"></span>
+                <p>先下大小盲注，然后给每个玩家发两张底牌，大盲注后面第一个玩家选择跟注、加注或者盖牌放弃，按照顺时针方向，其他玩家依次表态，大盲注玩家最后表态，如果玩家有加注情况，前面已经跟注的玩家需要再次表态甚至多次表态。
+                </p>
+            </div>
+
+        </ol>
+        <ol class='nav flop'>
+            <li>
+                <div class="box">
+                    <div class="front">
+                        <a href="#">Flop</a>
+                    </div>
+                    <div class="bottom">
+                        <a href="#">Flop</a>
+                    </div>
+                </div>
+            </li>
+            <div class="contents">
+                <span id="top2"></span>
+                <p>同时发三张公牌，由小盲注开始（如果小盲注已盖牌，由后面最近的玩家开始，以此类推），按照顺时针方向依次表态，玩家可以选择下注、加注、或者盖牌放弃。
+            </div>
+            </p>
+        </ol>
+        <ol class='nav turn'>
+
+            <li>
+                <div class="box">
+                    <div class="front"><a href="#">Turn</a></div>
+                    <div class="bottom">
+                        <a href="#">Turn</a>
+                    </div>
+                </div>
+            </li>
+            <div class="contents"><span id="top3"></span>
+                <p>发第四张牌，由小盲注开始，按照顺时针方向依次表态。
+                </p>
+            </div>
+
+        </ol>
+        <ol class='nav river'>
+            <li>
+                <div class="box">
+
+                    <div class="front">
+                        <a href="#">River</a>
+                    </div>
+                    <div class="bottom">
+                        <a href="#">River</a>
+                    </div>
+                </div>
+            </li>
+            <div class="contents"><span id="top4"></span>
+                <p>发第五张牌，由小盲注开始，按照顺时针方向依次表态，玩家可以选择下注、加注、或者盖牌放弃。
+                </p>
+            </div>
+        </ol>
+        <ol class='nav compare'>
+            <li>
+                <div class="box">
+                    <div class="front">
+                        <a href="#">比牌</a>
+                    </div>
+                    <div class="bottom">
+                        <a href="#">比牌</a>
+                    </div>
+                </div>
+            </li>
+            <div class="contents"><span id="top5"></span>
+                <p>经过前面4轮发牌和下注，剩余的玩家开始亮牌比大小，成牌最大的玩家赢取池底。
+                </p>
+            </div>
+        </ol>
+        <div id="icons">
+            <svg t="1613732045625" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                p-id="720" width="32" height="32" data-spm-anchor-id="a313x.7781069.0.i6">
+                <path
+                    d="M266.24 83.9168a49.152 49.152 0 0 0-49.152 49.2544v638.976a49.01888 49.01888 0 0 0 49.152 49.152h393.216a49.05984 49.05984 0 0 0 49.152-49.152v-638.976a49.152 49.152 0 0 0-49.152-49.2544H266.24z m466.8416 142.1312v426.2912l178.176-178.176a49.57184 49.57184 0 0 0 0-69.9392l-178.176-178.176z m-270.25408 79.1552c0 49.152 98.304 45.7728 98.304 116.736 0 76.3904-92.50816 60.416-98.304 27.648-5.81632 32.768-98.304 48.7424-98.304-27.648 0-70.9632 98.304-67.584 98.304-116.736z m0 147.456l49.152 98.304h-98.304l49.152-98.304z m-270.336 45.3632l-79.872 79.872a49.42848 49.42848 0 0 0 0 69.8368l79.872 79.872v-229.5808z m118.24128 347.8528l79.872 79.872a48.56832 48.56832 0 0 0 69.10976 0l79.872-79.872h-228.864z"
+                    p-id="721" fill="#3c3c3c"></path>
+            </svg>
+        </div>
+        <div class="contentsDisplay">
+            <p>Welcome to Depuuuuu</p>
+        </div>
+    </div>
+    <div class="zhuyemian">
+        <div class="menu">
+            <ol class="nav">
+                <li><a href="../" >主页面</a></li>
+            </ol>
+            <ol class="nav">
+                <li><a href="../teachrules/" >规则介绍</a></li>
+            </ol>
+            <ol class="nav" id="now">
+                <li><a>实战教学</a></li>
+            </ol>
+            <ol class="nav">
+                <li><a href="{% url 'assess' %}">实力评估</a></li>
+            </ol>
+        </div>
+        <div id="paixingbijiao">
+            <ol class="nav">
+                <li>
+                    <a href="#">同花大顺</a>
+                </li>
+
+                <div class="contents">
+
+                    <span class="left"></span>
+                    <table>
+                        <!-- <td>概率：</td> -->
+                        <td>最高为Ace（一点）的同花顺。</td>
+                        <td><img src="{% static 'image/HeartA.gif' %}" alt="同花大顺的图片例子">
+                            <img src="{% static 'image/HeartK.gif' %}" alt="同花大顺的图片例子">
+                            <img src="{% static 'image/HeartQ.gif' %}" alt="同花大顺的图片例子">
+                            <img src="{% static 'image/HeartJ.gif' %}" alt="同花大顺的图片例子">
+                            <img src="{% static 'image/Heart10.gif' %}" alt="同花大顺的图片例子">
+                        </td>
+                    </table>
+                </div>
+            </ol>
+            <ol class="nav">
+                <li><a href="#">同花顺</a></li>
+                <div class="contents">
+                    <table>
+                        <span class="left"></span>
+                        <!-- <td>（Straight Flush）</td> -->
+                        <td>同一花色，顺序的牌。</td>
+                        <td><img src="{% static 'image/SpadeK.gif' %}" alt="同花大顺的图片例子">
+                            <img src="{% static 'image/SpadeQ.gif' %}" alt="同花大顺的图片例子">
+                            <img src="{% static 'image/SpadeJ.gif' %}" alt="同花大顺的图片例子">
+                            <img src="{% static 'image/Spade10.gif' %}" alt="同花大顺的图片例子">
+                            <img src="{% static 'image/Spade9.gif' %}" alt="同花大顺的图片例子">
+                        </td>
+                    </table>
+                </div>
+            </ol>
+            <ol class="nav">
+                <li><a href="#">四条</a></li>
+                <div class="contents">
+                    <table>
+                        <span class="left"></span>
+                        <!-- <td>（Four of a Kind，亦称“铁支”、“四张”或“炸弹”）</td> -->
+                        <td>有四张同一点数的牌。</td>
+                        <td><img src="{% static 'image/Club4.gif' %}" alt="四条的图片例子">
+                            <img src="{% static 'image/Spade4.gif' %}" alt="四条的图片例子">
+                            <img src="{% static 'image/Diamond4.gif' %}" alt="四条的图片例子">
+                            <img src="{% static 'image/Heart4.gif' %}" alt="四条的图片例子">
+                            <img src="{% static 'image/Club3.gif' %}" alt="四条的图片例子">
+                        </td>
+                    </table>
+                </div>
+            </ol>
+            <ol class="nav">
+                <li><a href="#">满堂红</a></li>
+                <div class="contents">
+                    <table>
+                        <span class="left"></span>
+                        <!-- <td>（Fullhouse，亦称“俘虏”、“骷髅”、“夫佬”、“葫芦”）</td> -->
+                        <td>三张同一点数的牌，加一对其他点数的牌。</td>
+                        <td><img src="{% static 'image/Diamond9.gif' %}" alt="满堂红的图片例子">
+                            <img src="{% static 'image/Club9.gif' %}" alt="满堂红的图片例子">
+                            <img src="{% static 'image/Spade9.gif' %}" alt="满堂红的图片例子">
+                            <img src="{% static 'image/Diamond3.gif' %}" alt="满堂红的图片例子">
+                            <img src="{% static 'image/Club3.gif' %}" alt="满堂红的图片例子">
+                        </td>
+                    </table>
+                </div>
+            </ol>
+            <ol class="nav">
+                <li><a href="#">同花</a></li>
+                <div class="contents">
+                    <table>
+                        <span class="left"></span>
+                        <!-- <td>（Flush，简称“花”)</td> -->
+                        <td>五张同一花色的牌。</td>
+                        <td><img src="{% static 'image/Heart3.gif' %}" alt="同花的图片例子">
+                            <img src="{% static 'image/Heart5.gif' %}" alt="同花的图片例子">
+                            <img src="{% static 'image/Heart7.gif' %}" alt="同花的图片例子">
+                            <img src="{% static 'image/Heart8.gif' %}" alt="同花的图片例子">
+                            <img src="{% static 'image/Heart10.gif' %}" alt="同花的图片例子">
+                        </td>
+                    </table>
+                </div>
+            </ol>
+            <ol class="nav">
+                <li><a href="#">顺子</a></li>
+                <div class="contents below">
+                    <table>
+                        <span class="left right"></span>
+                        <!-- <td>（Straight，亦称“蛇”）</td> -->
+                        <td>五张顺连的牌。</td>
+                        <td><img src="{% static 'image/Heart7.gif' %}" alt="顺子的图片例子">
+                            <img src="{% static 'image/Heart8.gif' %}" alt="顺子的图片例子">
+                            <img src="{% static 'image/Diamond9.gif' %}" alt="顺子的图片例子">
+                            <img src="{% static 'image/Club10.gif' %}" alt="顺子的图片例子">
+                            <img src="{% static 'image/SpadeJ.gif' %}" alt="顺子的图片例子">
+                        </td>
+                    </table>
+                </div>
+            </ol>
+            <ol class="nav">
+                <li><a href="#">三条</a></li>
+                <div class="contents below">
+                    <table>
+                        <span class="left right"></span>
+                        <!-- <td>（Three of a kind，亦称“三张”）</td> -->
+                        <td>有三张同一点数的牌。</td>
+                        <td><img src="{% static 'image/Heart3.gif' %}" alt="三条的图片例子">
+                            <img src="{% static 'image/Club3.gif' %}" alt="三条的图片例子">
+                            <img src="{% static 'image/Diamond3.gif' %}" alt="三条的图片例子">
+                            <img src="{% static 'image/Heart10.gif' %}" alt="三条的图片例子">
+                            <img src="{% static 'image/Club4.gif' %}" alt="三条的图片例子">
+                        </td>
+                    </table>
+                </div>
+            </ol>
+            <ol class="nav">
+                <li><a href="#">两对</a></li>
+                <div class="contents below">
+                    <table>
+                        <span class="left right"></span>
+                        <!-- <td>（Two Pairs）</td> -->
+                        <td>两张相同点数的牌，加另外两张相同点数的牌。</td>
+                        <td><img src="{% static 'image/HeartK.gif' %}" alt="两对的图片例子">
+                            <img src="{% static 'image/SpadeK.gif' %}" alt="两对的图片例子">
+                            <img src="{% static 'image/Heart4.gif' %}" alt="两对的图片例子">
+                            <img src="{% static 'image/Club4.gif' %}" alt="两对的图片例子">
+                            <img src="{% static 'image/Diamond2.gif' %}" alt="两对的图片例子">
+                        </td>
+                    </table>
+                </div>
+            </ol>
+            <ol class="nav">
+                <li><a href="#">一对</a></li>
+                <div class="contents below">
+                    <table>
+                        <span class="left right"></span>
+                        <!-- <td>（One Pair）</td> -->
+                        <td>两张相同点数的牌。</td>
+                        <td><img src="{% static 'image/HeartK.gif' %}" alt="一对的图片例子">
+                            <img src="{% static 'image/SpadeK.gif' %}" alt="一对的图片例子">
+                            <img src="{% static 'image/Heart10.gif' %}" alt="一对的图片例子">
+                            <img src="{% static 'image/Club4.gif' %}" alt="一对的图片例子">
+                            <img src="{% static 'image/Diamond3.gif' %}" alt="一对的图片例子">
+                        </td>
+                    </table>
+                </div>
+            </ol>
+            <ol class="nav">
+                <li><a href="#">高牌</a></li>
+                <div class="contents below">
+                    <table>
+                        <span class="left right"></span>
+                        <!-- <td>（high card）</td> -->
+                        <td>不符合上面任何一种牌型的牌型，由单牌且不连续不同花的组成，以点数决定大小。</td>
+                        <td><img src="{% static 'image/Heart3.gif' %}" alt="高牌的图片例子">
+                            <img src="{% static 'image/Heart8.gif' %}" alt="高牌的图片例子">
+                            <img src="{% static 'image/Club9.gif' %}" alt="高牌的图片例子">
+                            <img src="{% static 'image/Diamond4.gif' %}" alt="高牌的图片例子">
+                            <img src="{% static 'image/SpadeK.gif' %}" alt="高牌的图片例子">
+                        </td>
+                    </table>
+                </div>
+            </ol>
+
+        </div>
+        <div id="example"><!-- gameback.css样式表-->
+            <div id="game">
+                <img id="win_bg" class="end" src="{% static 'image/win_bg.png' %}"  alt="background" width=800px>
+                <img id="lost_bg" class="end" src="{% static 'image/lost_gb.png' %}" alt="bg" width=800px>
+                <img id="draw_bg" class="end" src="{% static 'image/draw.png' %}" alt="bg" width=800px>
+                <img id="gameback" src="{% static 'image/blackback.png' %}" alt="一个样例" width=800px>
+                <div id="pubcards" class="show1 end">
+                <div class="pub" id="pub1"><img src="{% static 'image/cards/back.png' %}" alt="公共牌"></div>
+                <div class="pub" id="pub2"><img src="{% static 'image/cards/back.png' %}" alt="公共牌"></div>
+                <div class="pub" id="pub3"><img src="{% static 'image/cards/back.png' %}" alt="公共牌"></div>
+                <div class="pub" id="pub4"><img src="{% static 'image/cards/back.png' %}" alt="公共牌"></div>
+                <div class="pub" id="pub5"><img src="{% static 'image/cards/back.png' %}" alt="公共牌"></div>
+                </div>
+                <div class="oppback">
+                    <img  class="show1" src="{% static 'image/cards/oppback.png'%}" alt="对手牌背" id="opp_back">
+                    <div id="opp_card1" class="show1 end"></div>
+                    <div id="opp_card2" class="show1 end"></div>
+                </div>
+                <div id="mycard1" class="show1 end"></div>
+                <div id="mycard2" class="show1 end"></div>
+
+                <!--end游戏结束的显示-->
+                <div id="end_text1" class="end end_text">对方手牌</div>
+                <div id="end_text2" class="end end_text">己方手牌</div>
+                <div id="end_text3" class="end end_text">桌面牌</div>
+                <div id="end_text4" class="end end_text"></div>
+                <div id="end_text5" class="end end_text"></div>
+                <div id="end_text6" class="end end_text"></div>
+
+
+                <!--然后是用户框的显示-->
+                <div id="loading" class="show1"><img src="{% static 'image/loading.gif' %}" alt="waiting..."></div>
+                <div class="userbox show1" id="userbox1">
+                    <img src="{% static 'image/player.png'%}" alt="用户头像">
+                    <div class="moneydisplay">
+                        <img src="{% static 'image/wagerlabel.png'%}" alt="筹码标签">
+                        <div id="playermoney1" class="numberdisplay">20000</div>
+                    </div>
+                </div>
+                <div class="userbox show1" id="userbox2">
+                    <img src="{% static 'image/player.png'%}" alt="用户头像">
+                    <div class="moneydisplay">
+                        <img src="{% static 'image/wagerlabel.png'%}" alt="筹码标签">
+                        <div id="playermoney2" class="numberdisplay">20000</div>
+                    </div>
+                </div>
+                <!--然后是底池的显示-->
+                <div class="moneydisplay show1" id="pots">
+                    <img src="{% static 'image/wagerlabel.png'%}" alt="筹码标签">
+                    <div id="pot_num" class="numberdisplay">0</div>
+                </div>
+                <div class="moneydisplay show1" id="my_pots">
+                    <img src="{% static 'image/wagerlabel.png'%}" alt="筹码标签">
+                    <div id="my_pot_num" class="numberdisplay">0</div>
+                </div>
+                <div class="moneydisplay show1" id="opp_pots">
+                    <img src="{% static 'image/wagerlabel.png'%}" alt="筹码标签">
+                    <div id="opp_pot_num" class="numberdisplay">0</div>
+                </div>
+            </div>
+            <button id="start" class="hide1"><img src="{% static 'image/startbutton.png' %}" alt="开始"></button>
+            <button id="restart" class="end" onclick="location.reload(true)"><img src="{% static 'image/restart.png' %}" alt="重新开始"></button>
+            <button id="bb_circle" class="hide1">
+                <div id="duigou1" class="duigou"><img src="{% static 'image/duigou.png'%}" alt="对勾" width="80px"></div>
+                <img src="{% static 'image/bb_circle.png'%}" alt="大盲">
+            </button>
+            <button id="sb_circle" class="hide1">
+                <div id="duigou2" class="duigou"><img src="{% static 'image/duigou.png'%}" alt="对勾" width="80px"></div>
+                <img src="{% static 'image/sb_circle.png'%}" alt="小盲">
+            </button>
+            <!--然后是牌的图片……-->
+
+
+        </div>
+        <div id="dibu">
+            <article id="shenglv">
+                <input type="radio" name='changePos' id="pos0">
+                <input type="radio" name='changePos' id="pos1" checked>
+                <input type="radio" name='changePos' id="pos2">
+                <input type="radio" name='changePos' id="pos3">
+                <input type="radio" name='changePos' id="pos4">
+                <div class="chart pos">
+                    <div class="bar purple bar30">
+                        <div class="side front">
+                            <div class="skin"></div>
+                        </div>
+                        <div class="side back">
+                            <div class="skin"></div>
+                        </div>
+                        <div class="side left">
+                            <div class="skin"></div>
+                        </div>
+                        <div class="side right">
+                            <div class="skin"></div>
+                        </div>
+                        <div class="side top">
+                            <div class="skin"></div>
+                        </div>
+                        <div class="side bottom">
+                            <div class="skin"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="word">
+                    你的当前胜率
+                </div>
+{#                <div class="labels"><!--测试用的按钮，最后版面应该删去（5个阶段的按钮）-->#}
+{#                    <label for="pos0">1/5</label>#}
+{#                    <label for="pos1">2/5</label>#}
+{#                    <label for="pos2">3/5</label>#}
+{#                    <label for="pos3">4/5</label>#}
+{#                    <label for="pos4">5/5</label>#}
+{#                </div>#}
+            </article>
+            <div id="tips">
+                <p class="word">点击此处获得提示</p>
+                <div id = "tipsicon">
+                    <svg t="1625017516281" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2472" width="16" height="16"><path d="M512 504.32m-314.88 0a12.3 12.3 0 1 0 629.76 0 12.3 12.3 0 1 0-629.76 0Z" p-id="2473"></path><path d="M560.64 972.8l-94.72 0c-15.36 0-25.6 10.24-25.6 25.6 0 15.36 10.24 25.6 25.6 25.6l94.72 0c15.36 0 25.6-10.24 25.6-25.6C586.24 985.6 573.44 972.8 560.64 972.8z" p-id="2474"></path><path d="M627.2 867.84l-230.4 0c-15.36 0-25.6 10.24-25.6 25.6 0 15.36 10.24 25.6 25.6 25.6l230.4 0c15.36 0 25.6-10.24 25.6-25.6C652.8 878.08 640 867.84 627.2 867.84z" p-id="2475"></path><path d="M514.56 130.56c15.36 0 25.6-10.24 25.6-25.6L540.16 25.6c0-15.36-10.24-25.6-25.6-25.6s-25.6 10.24-25.6 25.6l0 79.36C488.96 117.76 499.2 130.56 514.56 130.56z" p-id="2476"></path><path d="M243.2 235.52c10.24-10.24 10.24-25.6 0-35.84L189.44 143.36c-10.24-10.24-25.6-10.24-35.84 0C143.36 153.6 143.36 168.96 151.04 179.2l56.32 56.32C217.6 245.76 235.52 245.76 243.2 235.52z" p-id="2477"></path><path d="M104.96 478.72 25.6 478.72c-15.36 0-25.6 10.24-25.6 25.6 0 15.36 10.24 25.6 25.6 25.6l79.36 0c15.36 0 25.6-10.24 25.6-25.6C130.56 488.96 117.76 478.72 104.96 478.72z" p-id="2478"></path><path d="M998.4 481.28l-79.36 0c-15.36 0-25.6 10.24-25.6 25.6 0 15.36 10.24 25.6 25.6 25.6L998.4 532.48c15.36 0 25.6-10.24 25.6-25.6C1024 494.08 1013.76 481.28 998.4 481.28z" p-id="2479"></path><path d="M844.8 140.8l-56.32 56.32c-10.24 10.24-10.24 25.6 0 35.84 10.24 10.24 25.6 10.24 35.84 0l56.32-56.32c10.24-10.24 10.24-25.6 0-35.84C870.4 130.56 852.48 130.56 844.8 140.8z" p-id="2480"></path></svg>
+                </div>
+            </div>
+            <div id="gongneng">
+                <button class="qipai choice">弃牌</button>
+                <button class="guopai choice">过牌</button>
+                <button class="genpai choice">跟牌</button>
+                <button class="jiazhu choice">加注</button>
+                <button class="allin choice">All in</button>
+                <button class="betpot choice">Bet Pot</button>
+            </div>
+            <div id="xiazhu">
+                <div class="xiazhuword">请选择你的下注金额</div>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <input type="range" min="1" max="1000" step="1" value="50">
+                    <div class="value"></div>
+                    <button type="button" class="check">确定</button>
+                    <div class="cancel">返回</div>
+                </form>
+            </div>
+        </div>
+        <div id="paixing">
+            <div class="box" id="test">
+            </div>
+            <div class="pop">
+                <button id="solbut1" class="solbut">回合</button>
+                <button id="solbut2" class="solbut">牌型</button>
+                <button id="solbut3" class="solbut">预测</button>
+                <div id="solver1_all" class="solver_block">
+                    <img src="{% static 'image/solver1.png'%}" class="solver_bg" id="solver1">
+                    <div id="round" class="solver_content">
+                        <table border="2" id="recorder">
+                            <tr>
+                                <th width="40px">id</th>
+                                <th width="100px">盲位</th>
+                                <th width="80px">action</th>
+                                <th width="100px">加注</th>
+                            </tr>
+                        </table>
+<!--                        <ul>
+
+                        </ul>-->
+                    </div>
+                </div>
+                <div id="solver2_all" class="solver_block">
+                    <img src="{% static 'image/solver2.png'%}" id="solver2" class="solver_bg">
+                <div id="pxa" class="solver_content">
+                    <table border="2" id="cards_type">
+                        <tr><th width="80px">牌型</th><th width="50px">己方概率</th><th width="50px">对手概率</th></tr>
+                        <tr><td>皇家同花顺</td><td id="type1"></td><td id="opp_type1"></td></tr>
+                        <tr><td>同花顺</td><td id="type2"></td><td id="opp_type2"></td></tr>
+                        <tr><td>四条</td><td id="type3"></td><td id="opp_type3"></td></tr>
+                        <tr><td>满堂红</td><td id="type4"></td><td id="opp_type4"></td></tr>
+                        <tr><td>同花</td><td id="type5"></td><td id="opp_type5"></td></tr>
+                        <tr><td>顺子</td><td id="type6"></td><td id="opp_type6"></td></tr>
+                        <tr><td>三条</td><td id="type7"></td><td id="opp_type7"></td></tr>
+                        <tr><td>两对</td><td id="type8"></td><td id="opp_type8"></td></tr>
+                        <tr><td>一对</td><td id="type9"></td><td id="opp_type9"></td></tr>
+                        <tr><td>高牌</td><td id="type10"></td><td id="opp_type10"></td></tr>
+                        <tr class="curr_type"><th height="40px">当前牌型</th><th id="curr_type"></th><th id="opp_curr_type"></th></tr>
+                    </table>
+
+                </div>
+                </div>
+                <div id="solver3_all" class="solver_block">
+                    <img src="{% static 'image/solver3.png'%}" id="solver3" class="solver_bg">
+                    <div class="solver_content"></div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</body>
+</html>

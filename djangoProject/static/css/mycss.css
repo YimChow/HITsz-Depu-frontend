@@ -1,0 +1,293 @@
+
+body{
+    display: flex;
+    justify-content: left;
+    transform:none;
+
+}
+.fixed:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.fixed {
+  display: block;
+}
+.fixed {
+  min-height: 1%;
+}
+* html .fixed {
+  height: 1%;
+}
+a {
+  display: block;
+}
+.contents {
+  display: none;
+}
+li:hover > a {
+  background-color: dimgrey;
+  height: 60px;
+}
+div,
+ul,
+li {
+  margin: 0 0;
+  padding: 0 0;
+}
+ul,
+li {
+  list-style: none;
+}
+
+#mainpage{
+    position:absolute;
+    width:100%;
+    top:32px;
+    left:0;
+}
+/*播放动态效果*/
+.play1{
+    position: relative;
+    top:335px;
+    width:300px;
+    height:300px;
+    left:300px;
+    display: flex;
+    justify-content: left;
+}
+
+.play2{
+    transition: .7s;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 3px solid #fff;
+    border-radius: 38% 62% 63% 37%/ 41% 44% 56% 59%;
+    animation: play2 10s infinite linear;
+}
+
+.play2 ::after,.play2::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 3px #fff solid;
+    transition: .7s;
+    border-radius: 38% 62% 63% 37%/ 41% 44% 56% 59%;
+    animation: play2 8s infinite linear;
+}
+
+.play2 ::before{
+    animation: play2 6s infinite linear;
+}
+@keyframes play2{
+    0%{
+        transform: rotateZ(0);
+    }
+    100%{
+        transform: rotateZ(360deg);
+    }
+}
+.play1:hover .play2,
+.play1:hover .play2::before,
+.play1:hover .play2::after{
+    background-color: rgba(255,255,255,.3);
+}
+
+.play4{
+    position: absolute;
+    width:  160px;
+    height: 80px;
+    top: 50px;
+    left:50px;
+    background-size: cover;
+}
+
+
+#sidepicture{
+    position:absolute;
+    left:50%;
+    top:10px;
+}
+
+#logo{
+    position: absolute;
+    top:0px;
+    left:20px;
+}
+
+#play{
+    position:absolute;
+    top:300px;
+}
+/*翻转效果*/
+#table{
+    position: absolute;
+    top:1200px;
+    left:3%;
+}
+#start_choice{
+    width:100%;
+    position:absolute;
+}
+
+
+
+body {
+    perspective: 300px;
+    padding: 0;
+    margin: 0;
+}
+
+.box1 {
+    position: absolute;
+    top:0px;
+    left:29%;
+    width: 300px;
+    height: 300px;
+    margin: 100px auto;
+    transition: all .4s;
+    transform-style: preserve-3d;
+    perspective-origin: center;
+}
+
+.font1{
+    position: absolute;
+    top: 1400px;
+    right: 100px;
+
+
+}
+.back1{
+    position: absolute;
+    top: 1400px;
+    right: 100px;
+
+}
+
+.front1 {
+    z-index: 1;
+}
+
+.back1 {
+    transform: rotateY(180deg);
+}
+
+
+.box2 {
+    position: absolute;
+    width: 300px;
+    top:0px;
+    left:54%;
+    height: 300px;
+    margin: 100px auto;
+    transition: all .4s;
+    transform-style: preserve-3d;
+    perspective-origin: center;
+}
+
+
+.font2 {
+    position: absolute;
+    top:1400px;
+    right: 100px;
+    bottom:100px;
+
+
+}
+.back2 {
+    position: absolute;
+    top: 1400px;
+    right:100px;
+    bottom: 100px;
+
+}
+
+.front2 {
+    z-index: 1;
+}
+
+.back2 {
+    transform: rotateY(180deg);
+}
+
+img{
+    border: 0;
+    user-select: none;
+}
+
+.menu{
+  position:fixed;
+  top:200px;
+  right:10px;
+  z-index:3;
+}
+
+.menu .nav {
+  position: relative;
+  top: -10px;
+    margin:0;
+}
+.menu .nav li {
+  height: 50px;
+  line-height: 50px;
+  transition: all 0.5s;
+}
+.menu li a {
+  transition: all 0.5s;
+}
+.menu .nav:hover li {
+  height: 60px;
+}
+.menu .nav:hover a{
+  background-color: #3c3c3c;
+}
+.menu ol a {
+  font-size: 20px;
+  list-style: none;
+  text-decoration: none;
+  background-color: #3c3c3c88;
+  color: #ffffff;
+  width: 100px;
+  text-align: center;
+  border: 0 solid black;
+  border-radius: 5px; /*圆角*/
+  margin-top: 1px;
+}
+
+.menu .daohang{
+  text-align: center;
+  color:black;
+  font-size: 15px;
+}
+
+.menu #now li{
+  background-color: #3c3c3c;
+  height:60px;
+}
+.logo2 {
+  position: fixed;
+  top: 100px;
+  right: 10px;
+  float: right;
+  cursor: pointer;
+  z-index: 2;
+}
+button {
+    cursor: pointer;
+    width: 75px;
+    height: -webkit-fill-available;
+    border-radius: 5px;
+    background-color: #fefefeaa;
+}
+button:hover{
+    opacity:0.9;
+}
+#mydiv{
+    position:relative;
+    transform:none;
+}
+

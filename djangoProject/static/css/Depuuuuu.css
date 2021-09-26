@@ -1,0 +1,842 @@
+/* 初始化万能头 */
+* {
+  padding: 0;
+  margin: 0;
+}
+.fixed:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.fixed {
+  display: block;
+}
+.fixed {
+  min-height: 1%;
+}
+* html .fixed {
+  height: 1%;
+}
+a {
+  text-decoration: none;
+  color: #272727;
+}
+a:hover {
+  color: #3c7ed7;
+}
+div,
+ul,
+li {
+  margin: 0 0;
+  padding: 0 0;
+}
+ul,
+li {
+  list-style: none;
+}
+body {
+  margin: 0 auto;
+  padding: 0;
+  font-size: 12px;
+  font-family: "微软雅黑", Helvetica, sans-serif, Arial;
+  color: #727272;
+  background: #fff;
+}
+img {
+  border: 0;
+}
+img:hover {
+  opacity: 0.9;
+  filter: Alpha(opacity=90);
+}
+
+/* 整个页面左方和上方留出一定的空白 */
+body {
+  /* padding-top: 10px;
+    padding-left: 10px; */
+  background-image: linear-gradient(25deg, #1f4b53, #4e7261, #789b6d, #a2c779);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* 标题 仿宋字体 半居中 */
+h1 {
+  padding-left: 300px;
+  font-family: FangSong;
+  color: black;
+}
+
+/* 对所有超链接初始化 */
+ol a {
+  font-size: 20px;
+  list-style: none;
+  text-decoration: none;
+  background-color: #3c3c3c;
+  color: #ffffff;
+  width: 100px;
+  text-align: center;
+  border: 0 solid black;
+  border-radius: 5px; /*圆角*/
+  margin-top: 1px;
+}
+a {
+  display: block;
+}
+.contents {
+  display: none;
+}
+li:hover > a {
+  background-color: dimgrey;
+  height: 60px;
+}
+.nav td {
+  width: 100px;
+  padding-right: 10px;
+  font-size: 10px;
+}
+.contentsDisplay {
+  display: block;
+  clear: both;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  /* position: absolute;    */
+  height: 50px;
+  width: 1000px;
+  background-image: linear-gradient(25deg, #7f2645, #9f273a, #be262d, #de231c);
+  margin-top: 50px;
+}
+
+.contentsDisplay p {
+  text-align: center;
+  /* font-size: xx-large; */
+  color: snow;
+
+  font-size: 18px;
+}
+
+.nav .contents {
+  text-align: center;
+}
+
+/* 板块一：牌型比较 */
+#paixingbijiao .nav {
+  position: relative;
+  top: -10px;
+}
+#paixingbijiao .nav li {
+  height: 50px;
+  line-height: 50px;
+  transition: all 0.5s;
+}
+#paixingbijiao li a {
+  transition: all 0.5s;
+}
+#paixingbijiao .nav:hover li {
+  height: 60px;
+}
+#paixingbijiao .nav:hover .contents {
+  display: block;
+  clear: both;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  position: absolute;
+  width: 400px;
+  background-image: linear-gradient(25deg, #7f2645, #9f273a, #be262d, #de231c);
+  left: 110px;
+  top: -10px;
+  line-height: 1.5;
+  color: white;
+  padding-top: 10px;
+}
+#paixingbijiao .nav:hover .below {
+  display: block;
+  clear: both;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  position: absolute;
+  width: 400px;
+  background-image: linear-gradient(25deg, #7f2645, #9f273a, #be262d, #de231c);
+  left: 110px;
+  top: -120px;
+  line-height: 1.5;
+  color: white;
+  padding-top: 10px;
+}
+.left {
+  position: absolute;
+  width: 0;
+  height: 0;
+  line-height: 0; /*为了防止ie下出现题型*/
+  border-right: 10px solid #be262d;
+  border-bottom: 10px solid transparent;
+  border-top: 10px solid transparent;
+  left: -10px;
+  top: 20px;
+}
+
+.right {
+  position: absolute;
+  width: 0;
+  height: 0;
+  line-height: 0; /*为了防止ie下出现题型*/
+  border-right: 10px solid #7f2645;
+  border-bottom: 10px solid transparent;
+  border-top: 10px solid transparent;
+  left: -10px;
+  top: 140px;
+}
+
+#paixinbijiao .title .introduce {
+  display: none;
+}
+#paixingbijiao .title:hover .introduce {
+  display: block;
+}
+#paixingbijiao {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  transform-style: preserve-3d;
+  z-index: 2;
+}
+/* 小icon */
+#icons {
+  float: left;
+  overflow: visible;
+  margin-top: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+/*板块二：牌型下注 */
+#fapaixiazhu {
+  position: relative;
+  margin-bottom: 10px;
+  left: 10px;
+}
+#fapaixiazhu .nav {
+  position: relative;
+  top: 12px;
+}
+#fapaixiazhu li:hover > a {
+  height: 30px;
+}
+#fapaixiazhu li a {
+  transition: all 0.5s;
+}
+
+#fapaixiazhu ol {
+  border: 2px solid transparent;
+  border-right: none;
+  overflow: hidden;
+  float: left;
+  perspective: 500px;
+}
+
+#fapaixiazhu .nav:hover .contents p {
+  padding: 10px;
+  line-height: 1.5;
+  color: #fff;
+}
+#paixingbijiao .nav:hover .contents {
+  width: 100px;
+}
+.front .bottom {
+  position: absolute;
+}
+.front {
+  transform: translateZ(27px);
+}
+.bottom {
+  transform: rotateX(-90deg) translateZ(-15px) translateY(-15px);
+}
+.box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: all 0.4s;
+  transform-style: preserve-3d;
+}
+.box:hover {
+  transform: rotateX(90deg);
+}
+
+.youxi {
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 900px;
+  top: 0;
+  pointer-events: none;
+}
+.zhuyemian {
+  position: relative;
+}
+
+.logo {
+  position: fixed;
+  top: 100px;
+  right: 10px;
+  float: right;
+  cursor: pointer;
+  z-index: 2;
+}
+
+a {
+  cursor: pointer;
+}
+
+table {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+
+td {
+  display: block;
+  height: 90px;
+}
+#example {
+  position: relative;
+  left: 120px;
+}
+#dibu {
+  border: black solid 1px;
+  position: relative;
+  left: 120px;
+  height: 120px;
+  width: 1000px;
+}
+#shenglv {
+  position: absolute;
+  width: 200px;
+  left: 50px;
+  top: 20px;
+}
+.word {
+  text-align: center;
+  font-size: large;
+  color: orange;
+  cursor: default;
+}
+:root {
+  --bgc: #d0d0d0;
+  --sideColor: #fefefe4d;
+  --navy: #0a4069;
+  --labelBorder: #fefefe99;
+  --lime: #76c900;
+  --red: #ec008c;
+  --boxShadow: #333333;
+  --cyan: #57caf4;
+  --start: #80008080;
+  --end: #ff80ff80;
+  --yellow: #f1c40f;
+  --lightGray: #91919133;
+  --transitionDuration: 0.3s;
+}
+
+.chart .bar {
+  transform: rotateX(-30deg) rotateY(0deg); /* 将进度条旋转一定角度，有助于看出立体效果 */
+  transform-style: preserve-3d; /* 设置每个面保留3D变换效果 */
+  height: 6em;
+  /* background-color: red; */
+  position: relative; /* 用来作为各个面的参考位置 */
+}
+.bar .side {
+  height: 4em;
+  width: 100%; /* 这里不能写固定值20em，会导致下面动态进度条的时候无法缩小 */
+  background-color: var(--sideColor);
+  position: absolute;
+
+  /* border: 1px solid red; */
+  /* 以下是设置字体上下左右居中，每个面先放入文字，立体效果做好后再删除这些文字 */
+  text-align: center;
+  line-height: 4em;
+  color: maroon;
+}
+/* 以下是移动加旋转每个面到相应的位置 */
+.bar .side.front {
+  transform: translateZ(2em);
+}
+.bar .side.back {
+  transform: translateZ(-2em);
+  position: absolute;
+}
+.bar .side.left {
+  /* 左右两个面的宽度要比别的面短 */
+  width: 4em;
+  transform: translateX(-2em) rotateY(-90deg);
+}
+.bar .side.right {
+  width: 4em;
+  transform: translateX(18em) rotateY(90deg);
+}
+.bar .side.top {
+  transform: translateY(-2em) rotateX(90deg);
+  position: absolute;
+}
+.bar .side.bottom {
+  transform: translateY(2em) rotateX(-90deg);
+  box-shadow: -1em -1em 3em var(--boxShadow);
+}
+.bar .side.top::after,
+.bar .side.back::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  height: 0.01em;
+  line-height: initial;
+  width: 100%;
+  box-shadow: 0em 0em 2em 0.2em var(--boxShadow);
+}
+
+.labels {
+  /* background-color: red; */
+  display: flex;
+  justify-content: center;
+}
+.labels label {
+  border: 1px solid var(--labelBorder);
+  box-sizing: border-box;
+  padding: 1em;
+  margin: 0 0.2em;
+  cursor: pointer;
+  color: var(--navy);
+  flex: 1;
+  text-align: center;
+}
+.labels label:first-of-type {
+  margin-left: 0;
+  border-radius: 0.2em 0 0 0.2em;
+}
+.labels label:last-of-type {
+  margin-right: 0;
+  border-radius: 0 0.2em 0.2em 0;
+}
+input {
+  display: none;
+}
+/* 设置各label选中样式 */
+input[id="red"]:checked ~ .labels label[for="red"],
+input[id="cyan"]:checked ~ .labels label[for="cyan"],
+input[id="lime"]:checked ~ .labels label[for="lime"],
+input[id="pos0"]:checked ~ .labels label[for="pos0"],
+input[id="pos1"]:checked ~ .labels label[for="pos1"],
+input[id="pos2"]:checked ~ .labels label[for="pos2"],
+input[id="pos3"]:checked ~ .labels label[for="pos3"],
+input[id="pos4"]:checked ~ .labels label[for="pos4"],
+input[id="dynamic1"]:checked ~ .labels label[for="dynamic1"],
+input[id="dynamic2"]:checked ~ .labels label[for="dynamic2"],
+input[id="dynamic3"]:checked ~ .labels label[for="dynamic3"],
+input[id="dynamic4"]:checked ~ .labels label[for="dynamic4"],
+input[id="dynamic5"]:checked ~ .labels label[for="dynamic5"] {
+  color: var(--lime);
+  background-color: var(--navy);
+}
+/* 通过绝对定位给所有面加皮肤 */
+.skin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4em;
+  width: 100%;
+  background-color: var(--skinColor);
+  transition: all var(--transitionDuration) ease-in-out;
+}
+input ~ .chart .skin {
+  opacity: 0.7;
+}
+
+input[id="red"]:checked ~ .chart .skin {
+  background-color: var(--red);
+}
+input[id="cyan"]:checked ~ .chart .skin {
+  background-color: var(--cyan);
+}
+input[id="lime"]:checked ~ .chart .skin {
+  background-color: var(--lime);
+}
+
+/* 分段进度条 */
+.pos .skin {
+  background: linear-gradient(to right, var(--start), var(--end));
+}
+.pos .left .skin,
+.pos .right .skin {
+  background: transparent;
+}
+input[id="pos0"]:checked ~ .chart .skin {
+  width: 20%;
+}
+input[id="pos1"]:checked ~ .chart .skin {
+  width: 40%;
+}
+input[id="pos2"]:checked ~ .chart .skin {
+  width: 60%;
+}
+input[id="pos3"]:checked ~ .chart .skin {
+  width: 80%;
+}
+input[id="pos4"]:checked ~ .chart .skin {
+  width: 100%;
+}
+#tips {
+  position: absolute;
+  left: 680px;
+  top: 10px;
+  border: springgreen solid 1px;
+  height: 90px;
+  width: 210px;
+}
+#tipsicon {
+  position: absolute;
+  right: 4px;
+  bottom: 3px;
+  cursor: pointer;
+}
+#gongneng {
+  position: absolute;
+  left: 350px;
+  top: 20px;
+  display: block;
+  width: 300px;
+  height: 33px;
+}
+.xiazhuword {
+  position: relative;
+  text-align: center;
+  color: orange;
+  font-size: 15px;
+  top: -15px;
+  cursor: default;
+}
+input[type="range"] {
+  display: block;
+  -webkit-appearance: none;
+  background-color: #bdc3c7;
+  width: 150px;
+  height: 5px;
+  border-radius: 5px;
+  margin: 0 auto;
+  outline: 0;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background-color: #49a9ee;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid white;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  background-color: white;
+  border: 2px solid #49a9ee;
+}
+input[type="range"]::-webkit-slider-thumb:active {
+  transform: scale(1.6);
+}
+.value {
+  position: relative;
+  text-align: center;
+  top: 50%;
+  font-size: 36px;
+  color: orange;
+  height: 50px;
+  cursor: default;
+}
+
+/*可能牌型*/
+/*$color: #e91e63;*/
+/*.box{*/
+
+/*    overflow: hidden;*/
+
+/*    & > div {*/
+/*        float: left;*/
+/*        margin: 20px;*/
+/*    }*/
+/*}*/
+
+/*气泡1*/
+.pop {
+    margin: 0;
+    width: 200px;
+    height: 400px;
+    padding: 10px;
+    border-radius: 8px;
+    position: absolute;
+    opacity: 0.95;
+    left: 926px;
+    top: -4px;
+}
+
+
+.pop-with-border:before {
+  top: -9px;
+  border-bottom-color: #ddd;
+  z-index: 99;
+}
+
+.px{
+  margin: 3px;
+  background-color: #fff;
+  height: 22px;
+  border-radius: 3px;
+  text-align: left;
+}
+
+/*气泡2*/
+.pop-with-border {
+    margin: 30px;
+    width: 200px;
+    height: 100px;
+    padding: 10px;
+    background: #fff;
+    border-radius: 8px;
+    position: absolute;
+    left: 908px;
+    top:100px;
+    border: 1px solid #ddd;
+    filter: drop-shadow(0 0 5px #eee);
+}
+.pop-with-border:before,
+.pop-with-border:after {
+  top: -8px;
+  border: 8px solid transparent;
+  border-top: 0;
+  border-bottom-color: #fff;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  left: 16px;
+  overflow: hidden;
+  position: absolute;
+  z-index: 101;
+}
+.pop-with-border:before {
+  top: -9px;
+  border-bottom-color: #ddd;
+  z-index: 99;
+}
+
+.px5-8{
+  margin: 3px;
+  background-color: #e91e63;
+  height: 22px;
+  border-radius: 3px;
+  text-align: left;
+  color: #fff;
+}
+
+/*气泡3*/
+.pop3 {
+  margin: 30px;
+  width: 200px;
+  height: 100px;
+  padding: 10px;
+  background: #3c3c3c;
+  border-radius: 8px;
+  position: absolute;
+  left: 908px;
+  top:230px;
+  border: 1px solid #e75a89;
+  filter: drop-shadow(0 0 5px rgb(238, 238, 238));
+}
+.pop3:before,
+.pop3:after {
+top: -8px;
+border: 8px solid transparent;
+border-top: 0;
+border-bottom-color: #e91e63;
+content: "";
+display: block;
+width: 0;
+height: 0;
+left: 16px;
+overflow: hidden;
+position: absolute;
+z-index: 101;
+}
+.pop3:before {
+top: -9px;
+border-bottom-color: #e91e63;
+z-index: 99;
+}
+.px8-10{
+  margin: 3px;
+  background-color: #fff;
+  height: 22px;
+  border-radius: 3px;
+  text-align: left;
+}
+.current{
+  margin: 3px;
+  height: 45px;
+  background-color: aqua;
+  border-radius: 3px;
+  text-align: left;
+  font-size: 250%;
+}
+
+.check {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: yellow;
+  position: relative;
+  left: 165px;
+  top: -30px;
+  cursor:pointer;
+}
+.cancel{
+   display: table-cell;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #ffff0050;
+  position: relative;
+  left: 165px;
+  top: -130px;
+  cursor:pointer;
+  text-align: center;
+  color:black;
+  font: 400 13.3333px Arial;
+  border-width: 2px;
+  border-style: outset;
+  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  border-image: initial;
+  vertical-align:middle
+}
+
+button {
+    cursor: pointer;
+    width: 75px;
+    height: -webkit-fill-available;
+    border-radius: 5px;
+    background-color: #fefefeaa;
+}
+
+#xiazhu {
+    position: absolute;
+    top: 25px;
+    left: 400px;
+    display: none;
+}
+
+.logo2 {
+  position: fixed;
+  top: 100px;
+  right: 10px;
+  float: right;
+  cursor: pointer;
+  z-index: 2;
+}
+.menu{
+  position:fixed;
+  top:200px;
+  right:10px;
+  z-index:3;
+}
+
+
+.menu .nav {
+  position: relative;
+  top: -10px;
+}
+.menu .nav li {
+  height: 50px;
+  line-height: 50px;
+  transition: all 0.5s;
+}
+.menu li a {
+  transition: all 0.5s;
+}
+.menu .nav:hover li {
+  height: 60px;
+}
+.menu .nav:hover a{
+  background-color: #3c3c3c;
+}
+.menu ol a {
+  font-size: 20px;
+  list-style: none;
+  text-decoration: none;
+  background-color: #3c3c3c88;
+  color: #ffffff;
+  width: 100px;
+  text-align: center;
+  border: 0 solid black;
+  border-radius: 5px; /*圆角*/
+  margin-top: 1px;
+}
+
+.menu .daohang{
+  text-align: center;
+  color:black;
+  font-size: 15px;
+}
+
+.menu #now{
+  background-color: #3c3c3c;
+  height:60px;
+}
+
+#round{
+  position: absolute;
+  top: 40px;
+  left:10px;
+  height: 400px;
+  width : 197px;
+  overflow-y: auto;
+}
+
+#pxa {
+    position:absolute;
+    top:40px;
+    left:13px;
+    height:410px;
+    width:197px;
+    overflow-y:auto;
+}
+#recorder td{
+    text-align:center;
+    height:20px;
+    display:table-cell;
+    border:0.5px;
+
+}
+#recorder th{
+    color:#ffffff;
+}
+
+#cards_type td{
+    text-align:center;
+    height:30px;
+    display:table-cell;
+    border:2px;
+    color:#ffffff;
+}
+#cards_type th{
+    color:#ffffff;
+}
+.curr_type{
+    font-size:15px;
+}
+
+

@@ -1,0 +1,261 @@
+
+#gameback{
+    opacity:0.8;
+    filter:alpha(opacity=80);
+}
+
+
+#start:hover{
+    position:absolute;
+    top:372px;
+    left:626px;
+}
+#start {
+    background-color: transparent;
+    border-style: none;
+    position: absolute;
+    top: 370px;
+    left: 626px;
+    width:140px;
+    height:60px;
+}
+#restart{
+    height:30px;
+    width:169px;
+    background-color: transparent;
+    border-style:none;
+    position:absolute;
+    top:408px;
+    left:628px;
+}
+#restart:hover{
+    position:absolute;
+    top:410px;
+    left:628px;
+}
+#bb_circle {
+    background-color:transparent;
+    border-style:none;
+    position:absolute;
+    top: 98px;
+    left: 121px;
+    width: 192px;
+    height: 74px;
+}
+#bb_circle:hover {
+    background-color:transparent;
+    border-style:none;
+    position:absolute;
+    top: 100px;
+    left: 121px;
+    width: 192px;
+    height: 74px;
+}
+.duigou {
+    position:absolute;
+    top:0px;
+    left:0px;
+}
+
+#sb_circle {
+    background-color:transparent;
+    border-style:none;
+    position:absolute;
+    top: 298px;
+    left: 121px;
+    width: 192px;
+    height: 74px;
+}
+#sb_circle:hover {
+    background-color:transparent;
+    border-style:none;
+    position:absolute;
+    top: 300px;
+    left: 121px;
+    width: 192px;
+    height: 74px;
+}
+
+#pubcards{
+    position:absolute;
+    top:190px;
+    left:225px;
+}
+
+.pub{
+    border: 2px solid transparent;
+    border-right: none;
+    overflow: hidden;
+    float: left;
+}
+
+.oppback{
+    position:absolute;
+    top:0px;
+    left:370px;
+}
+
+#mycard1{
+    position:absolute;
+    top:350px;
+    left:360px;
+}
+#mycard2{
+    position:absolute;
+    top:365px;
+    left:385px;
+}
+#opp_card1{
+    position:absolute;
+    top:10px;
+    left:-13px;
+}
+#opp_card2{
+    position:absolute;
+    top:25px;
+    left:12px;
+}
+
+.userbox{
+    position:absolute;
+    height:70px;
+    width:150px;
+    border:black solid 1px;
+    background-color:rgba(0,0,0,0.7);
+
+    border-radius:8px;
+}
+.userbox img{
+    width:50%;
+    opacity:1.8;
+}
+
+#userbox1{
+    top:369px;
+    left:190px;
+}
+#userbox2{
+    top:4px;
+    left:460px;
+}
+#pots{
+    top:220px;
+    left:130px;
+}
+#my_pots{
+    top:314px;
+    left:358px;
+}
+#opp_pots{
+    top:128px;
+    left:388px
+}
+.numberdisplay{
+    position:absolute;
+    top:5px;
+    left:27px;
+    color:white;
+}
+.moneydisplay{
+    position:absolute;
+    border-radius:2px;
+    width:80px;
+    height:23px;
+    background-color:rgba(255,255,255,0.2);
+    top:23px;
+    left:60px;
+}
+.moneydisplay img{
+    width:35%;
+    top:3px;
+}
+
+.solver_bg{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:101%;
+    z-index:-1;
+}
+.solver_content{
+    position:absolute;
+    top:50px;
+    left:20px;
+}
+#solbut1 {
+    position: absolute;
+    left: 3px;
+    top: 6px;
+}
+#solbut2 {
+    position: absolute;
+    left: 72px;
+    top: 6px;
+}
+#solbut3 {
+    position: absolute;
+    left: 144px;
+    top: 6px;
+}
+
+.solbut{
+    height:20px;
+    width:70px;
+    background:transparent;
+    color:#ffffff;
+    font-size:10px;
+}
+
+.opp_record{
+    background:rgba(255,239,231);
+}
+.self_record{
+    background:rgba(255,255,255);
+}
+
+
+#end_part1{
+    position:absolute;
+    top:40px;
+    left:20px;
+}
+.end_text{
+    font-size:20px;
+    color:rgba(255,255,255);
+}
+#end_text1{
+    position:absolute;
+    top:156px;
+    left:12px;
+}
+#end_text2{
+    position:absolute;
+    top:257px;
+    left:12px;
+}
+#end_text3{
+position:absolute;
+    top:361px;
+    left:17px;
+}
+#end_text4{
+    position:absolute;
+    top:157px;
+    left:319px;
+}
+#end_text5{
+    position:absolute;
+    top:256px;
+    left:319px;
+}
+#end_text6{
+    position:absolute;
+    top:57px;
+    left:527px;
+}
+
+#loading{
+    position:absolute;
+    top:131px;
+    left:367px;
+}
